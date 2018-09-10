@@ -32,17 +32,14 @@ newline    =  \n
 whitespace = [ \t\r]+
 comment    = "//".*
 
-//otherKeywords = "bool".*
-
+otherKeywords = "bool"|"record"|"size"|"new"|"while"|"else"|"if"|","|"int"|"float"|"return"|"break"|"continue"|"and"|"or"|"not"|"true"|"false"|"=="|"!="|"<"|">"|"<="|">="|"-"|"/"
+//Bool Prob
 
 
 %%
 
 "main"                              { yyparser.yylval = new ParserVal(null            ); return Parser.MAIN   ; }
 "print"                             { yyparser.yylval = new ParserVal(null            ); return Parser.PRINT  ; }
-"bool"                              { yyparser.yylval = new ParserVal(null            ); return Parser.BOOL     ; }
-
-"int"                               { yyparser.yylval = new ParserVal(null            ); return Parser.INT    ; }
 "{"                                 { yyparser.yylval = new ParserVal(null            ); return Parser.BEGIN  ; }
 "}"                                 { yyparser.yylval = new ParserVal(null            ); return Parser.END    ; }
 "("                                 { yyparser.yylval = new ParserVal(null            ); return Parser.LPAREN ; }
@@ -53,17 +50,16 @@ comment    = "//".*
 ";"                                 { yyparser.yylval = new ParserVal(null            ); return Parser.SEMI   ; }
 "["                                 { yyparser.yylval = new ParserVal(null            ); return Parser.BCT_L  ; }
 "]"                                 { yyparser.yylval = new ParserVal(null            ); return Parser.BCT_R  ; }
-"if"                                { yyparser.yylval = new ParserVal(null            ); return Parser.IF     ; }
-","                                 { yyparser.yylval = new ParserVal(null            ); return Parser.COMMA  ; }
-"<"                                 { yyparser.yylval = new ParserVal(null            ); return Parser.MKR    ; }
+"true"                              { yyparser.yylval = new ParserVal(null            ); return Parser.BOOL_TRUE ; }
+"false"                             { yyparser.yylval = new ParserVal(null            ); return Parser.BOOL_FALSE; }
 
-//{otherKeywords}                     { yyparser.yylval = new ParserVal((Object)yytext()); return Parser.OTHER; }
 
+{otherKeywords}                     { yyparser.yylval = new ParserVal((Object)yytext().toUpperCase()); return Parser.OTHER; }
 {int}                               { yyparser.yylval = new ParserVal((Object)yytext()); return Parser.INT_LIT; }
 {float}                             { yyparser.yylval = new ParserVal((Object)yytext()); return Parser.FLOAT_LIT; } 
 {identifier}                        { yyparser.yylval = new ParserVal((Object)yytext()); return Parser.IDENT  ; }
 {comment}                           { System.out.print(yytext()); /* skip */ }
-{newline}                           { System.out.println(""); return Parser.RET;}
+{newline}                           { System.out.println(); return Parser.RET;}
 {whitespace}                        { System.out.print(yytext()); /* skip */ }
 
 \b     { System.err.println("Sorry, backspace doesn't work"); }

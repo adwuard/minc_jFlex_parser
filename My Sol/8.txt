@@ -16,6 +16,7 @@
     << add zl into symbol table at 11 >><ID, 11 :16> <= :16> <ID, 9 :16> <+ :16> <ID, 10 :16><; :16>
     << add zm into symbol table at 12 >><ID, 12 :17> <= :17> <ID, 10 :17> <+ :17> <ID, 11 :17><; :17>
     << add zn into symbol table at 13 >><ID, 13 :18> <= :18> <ID, 11 :18> <+ :18> <ID, 12 :18><; :18>
-    <FLOAT_VALUE, 3.141592 :19> <bool, int, float, record, size, new, while, if, else, return, break, continue, and, or, not, true, false == != < > <= >= - * /  this line will be ignored ; // test 1 2 3 :19>
+    <FLOAT_VALUE, 3.141592 :19> <BOOL :19><, :19> <INT :19><, :19> <FLOAT :19><, :19> <RECORD :19><, :19> <SIZE :19><, :19> <NEW :19><, :19> <WHILE :19><, :19> <IF :19><, :19> <ELSE :19><, :19> <RETURN :19><, :19> <BREAK :19><, :19> <CONTINUE :19><, :19> <AND :19><, :19> <OR :19><, :19> <NOT :19><, :19> <BOOL_VALUE, true :19><, :19> <BOOL_VALUE, false :19> <== :19> <!= :19> << :19> <> :19> <<= :19> <>= :19> <- :19> <* :19> </ :19>  << add this into symbol table at 14 >><ID, 14 :19> << add line into symbol table at 15 >><ID, 15 :19> << add will into symbol table at 16 >><ID, 16 :19> << add be into symbol table at 17 >><ID, 17 :19> << add ignored into symbol table at 18 >><ID, 18 :19> <; :19> // test 1 2 3
     <PRINT :20> <ID, 13 :20><; :20>
 <} :21>
+

@@ -18,5 +18,6 @@ public class Program {
         java.io.Reader r = new java.io.FileReader(args[0]);
         Parser p = new Parser(r);
         p.yyparse();
+        System.out.println();
 	}
 }

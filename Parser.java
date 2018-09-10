@@ -14,18 +14,18 @@ public class Parser
     public static final int MUL         = 43;//
     public static final int SEMI        = 47;//
     public static final int INT_LIT     = 55;//
-    public static final int FLOAT_LIT   = 56;
+    public static final int FLOAT_LIT   = 56;//
     public static final int IDENT       = 58;//
     public static final int BCT_L       = 60;//[
     public static final int BCT_R       = 61;//]
-    public static final int IF          = 62;//
-    public static final int IT          = 63;// 
+    public static final int IFST         = 62;//
     public static final int OTHER       = 64;
-    public static final int BOOL       = 67;
     public static final int COMMA       = 65;// 
     public static final int RET         = 2;//  
-    public static final int MKR         = 3;//  
-    
+    //public static final int MKR         = 3;//  
+    public static final int RELOP         =4;
+    public static final int BOOL_TRUE         =5;
+    public static final int BOOL_FALSE         =6;
     
 
     public Parser(java.io.Reader r) throws java.io.IOException
@@ -51,22 +51,24 @@ public class Parser
             if(token == 2) {lineCount++;};
             if(token == 10){System.out.print("<MAIN :" + lineCount + ">");}
             if(token == 11){System.out.print("<PRINT :" + lineCount + ">");}
+            if(token == 5){System.out.print("<BOOL_VALUE, true :" + lineCount + ">");}
+            if(token == 6){System.out.print("<BOOL_VALUE, false :" + lineCount + ">");}            
             if(token == 30){System.out.print("<{ :" + lineCount + ">");} // {
             if(token == 31){System.out.print("<} :" + lineCount + ">");} // }
             if(token == 33){System.out.print("<( :" + lineCount + ">");} // (
             if(token == 34){System.out.print("<) :" + lineCount + ">");} // )
             if(token == 38){System.out.print("<= :" + lineCount + ">");} // =
             if(token == 41){System.out.print("<+ :" + lineCount + ">");} // +
-            if(token == 43){System.out.print("<- :" + lineCount + ">");} // -
+            if(token == 43){System.out.print("<* :" + lineCount + ">");} // -
             if(token == 47){System.out.print("<; :" + lineCount + ">");} // ;    
             if(token == 55){System.out.print("<INT_VALUE, "+ attr+ " :" + lineCount + ">");} //Integers
             if(token == 56){System.out.print("<FLOAT_VALUE, "+ attr+ " :" + lineCount + ">");} //Floats
             if(token == 60){System.out.print("<[ :" + lineCount + ">");} // [
             if(token == 61){System.out.print("<] :" + lineCount + ">");} // ]  
-            if(token == 65){System.out.print("<, :" + lineCount + ">");} // ]     
-            if(token == 67){System.out.print("<bool :" + lineCount + ">");} // ]     
-            if(token == 67){System.out.print("<<= :" + lineCount + ">");} // ]              
-            if(token == 64){System.out.print("<"+ attr +" :" + lineCount + ">");} // 
+            if(token == 65){System.out.print("<, :" + lineCount + ">");} // ]        
+            if(token == 64){System.out.print("<"+ attr +" :" + lineCount + ">");} //
+            if(token == 62){System.out.print("<IF :" + lineCount + ">");}
+            if(token == 4){System.out.print("<<= :" + lineCount + ">");} // 
             
             //Identifiers
             if(token == 58){
@@ -80,7 +82,7 @@ public class Parser
                 }
             }
             
-
         }
+        
     }
 }
